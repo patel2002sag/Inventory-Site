@@ -1,0 +1,130 @@
+body{
+    margin:0;
+    padding:20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+*{
+    box-sizing: border-box;
+}
+.button-container{
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.button-container .product-btn{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: dodgerblue;
+    border-style: none;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.button-container .product-btn a{
+    text-decoration: none;
+    color: white;
+}
+
+/* ******************DESING FOR TABLE**************** */
+.table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 50px;
+}
+
+.table td, .table th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 16px;
+}
+
+table th{
+    background-color: dodgerblue;
+    color: white;
+}
+
+.table tbody tr:nth-child(even){
+    background-color: lightgrey;
+}
+/* *********UPDATE BUTTON STYLE************** */
+table .update-btn{
+    background-color: #fff;
+    color: green;
+    font-size: 16px;
+    padding: 5px 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+table .update-btn a{
+    text-decoration: none;
+    color: green;
+}
+.update-btn:hover {
+    background-color: green;
+    color: white;
+}
+.update-btn a:hover{
+    color: white;
+}
+/* ***************DELETE BUTTON STYLE********************* */
+
+table .delete-btn{
+    background-color: #fff;
+    color: darkred;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 5px 5px;
+    border: 1px solid black;
+    margin-top: 10px;
+}
+table .delete-btn a{
+    text-decoration: none;
+    color: darkred;
+}
+.delete-btn:hover {
+    background-color: darkred;
+    color:  white;
+}
+.delete-btn a:hover{
+    background-color: darkred;
+    color: white;
+}
+
+/* **************RESPONSIVE TABLE DESIGN***************** */
+@media(max-width: 500px){
+    .table thead{
+        display: none;
+    }
+    .table, .table tbody, .table tr, .table td{
+        display: block;
+        width: 100%;
+    }
+    .table tr{
+        margin-bottom: 15px;
+
+    }
+    .table td{
+        text-align: right;
+        padding-left: 50%;
+        text-align: right;
+        position: relative;
+    }
+    .table td::before{
+        content: attr(data-lable);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: left ;
+    }
+}
