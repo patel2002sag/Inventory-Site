@@ -14,6 +14,35 @@ include "connect.php";
 </head>
 
 <body>
+
+        <!-- NavBar -->
+        <nav class = "navbar">
+        <div>
+            <a href="index.php">
+                <img  class = "primary-icon" src= "relax_icon.png" alt="">
+            </a>
+        </div>
+        <!-- Item List -->
+        <ul class = "nav-list" id = "navi-list">
+            <li class = "list-item">
+                <a href="display_data.php">Products</a>
+            </li>
+            <li class = "list-item">
+                <a href="#">Customers</a>
+            </li>
+            <li class = "list-item">
+                <a href="#">About</a>
+            </li>
+        </ul>
+        <!-- Hamburgeer menu icon -->
+        <div class = "menu" id = "toggle-button">
+            <div class = "menu-line"></div>
+            <div class = "menu-line"></div>
+            <div class = "menu-line"></div>
+        </div>
+    </nav>
+
+
     <div class="button-container">
             <a class="product-btn"  href="products.php">Add Product</a>
     </div>
