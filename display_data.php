@@ -14,10 +14,43 @@ include "connect.php";
 </head>
 
 <body>
+
+    <header>
+        <!-- NavBar -->
+        <nav class = "navbar">
+            <div>
+                <a href="index.php">
+                    <img  class = "primary-icon" src= "relax_icon.png" alt="">
+                </a>
+            </div>
+            <!-- Item List -->
+            <ul class = "nav-list" id = "navi-list">
+                <li class = "list-item">
+                    <a href="display_data.php">Products</a>
+                </li>
+                <li class = "list-item">
+                    <a href="customer.php">Contact</a>
+                </li>
+                <li class = "list-item">
+                    <a href="#">About</a>
+                </li>
+            </ul>
+            <!-- Hamburgeer menu icon -->
+            <div class = "menu" id = "toggle-button">
+                <div class = "menu-line"></div>
+                <div class = "menu-line"></div>
+                <div class = "menu-line"></div>
+            </div>
+        </nav>
+    </header>
+
+
     <div class="button-container">
             <a class="product-btn"  href="products.php">Add Product</a>
     </div>
-
+    
+    <h1 style = "text-align: center" >Parent Table</h1>
+    <!--************* Display the Parent Table *********** -->
     <table class="table">
         <thead>
             <th>ID</th>
@@ -31,7 +64,6 @@ include "connect.php";
             <th>Edit</th>
             <th>Delete</th>
         </thead>
-
         <tbody>
             <?php
             $sql = "SELECT * FROM `products`";
@@ -72,7 +104,43 @@ include "connect.php";
                 }
             }
             ?>
+        </tbody>
+    </table>
 
+    <br>
+    <h1 style = "text-align: center">Child Table</h1>
+
+    <!--************* Display the Child Table *********** -->
+    <table class="table">
+    <thead>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Price</th>
+    </thead>
+        <tbody>
+            <?php
+            $sql = "SELECT * FROM `items`";
+            $result = mysqli_query($conn, $sql);
+
+            if ($result) {
+                // Fetch the data from the databse
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $product_id =  $row['product_id'];
+                    $productName =  $row['productName'];
+                    $price =  $row['price'];
+
+                    //print the data on the table
+                    echo '
+                        <tr>
+                            <td data-lable="Product-Id">' . $product_id . '</td>
+                            <td data-lable="Product-Name">' . $productName . '</td>
+                            <td data-lable="Price">' . $price . '</td>
+                        </tr>
+                        
+                        ';
+                }
+            }
+            ?>
         </tbody>
     </table>
 </body>

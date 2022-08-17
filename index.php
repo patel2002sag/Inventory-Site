@@ -9,40 +9,42 @@
     <title>Home Page</title>
 </head>
 <body>
+    <header>
+        <!-- NavBar -->
+        <nav class = "navbar">
+            <div>
+                <a href="index.php">
+                    <img  class = "primary-icon" src= "relax_icon.png" alt="">
+                </a>
+            </div>
+            <!-- Item List -->
+            <ul class = "nav-list" id = "navi-list">
+                <li class = "list-item">
+                    <a href="display_data.php">Products</a>
+                </li>
+                <li class = "list-item">
+                    <a href="customer.php">Contact</a>
+                </li>
+                <li class = "list-item">
+                    <a href="#">About</a>
+                </li>
+            </ul>
+            <!-- Hamburgeer menu icon -->
+            <div class = "menu" id = "toggle-button">
+                <div class = "menu-line"></div>
+                <div class = "menu-line"></div>
+                <div class = "menu-line"></div>
+            </div>
+        </nav>
+    </header>
     
-    <!-- NavBar -->
-    <nav class = "navbar">
-        <div>
-            <a href="index.php">
-                <img  class = "primary-icon" src= "relax_icon.png" alt="">
-            </a>
-        </div>
-        <!-- Item List -->
-        <ul class = "nav-list" id = "navi-list">
-            <li class = "list-item">
-                <a href="display_data.php">Products</a>
-            </li>
-            <li class = "list-item">
-                <a href="#">Customers</a>
-            </li>
-            <li class = "list-item">
-                <a href="#">About</a>
-            </li>
-        </ul>
-        <!-- Hamburgeer menu icon -->
-        <div class = "menu" id = "toggle-button">
-            <div class = "menu-line"></div>
-            <div class = "menu-line"></div>
-            <div class = "menu-line"></div>
-        </div>
-    </nav>
 
     <!-- Hero Image and its text -->
     <div class="hero-image">
         <div class="hero-text">
           <h1 class = "hero-title">Inventory Mangement for Growing Business!!</h1>
           <p style="font-size: 30px;">Let's grow together</p>
-          <a class = "hero-button"onclick="checker()" href="display_data.php"><button>Add Now</button></a>
+          <a class = "hero-button"onclick="promptMe()" href="display_data.php"><button>Add Now</button></a>
         </div>
     </div>
 
@@ -70,12 +72,9 @@
 
 <!-- Script for Toggling the menu -->
 <script>
-    // alert("Welcome to my website");
-    const toggleButton = document.getElementById("toggle-button");
-    const naviList = document.getElementById("navi-list");
+    function promptMe(){
+    var userAdjective = prompt("What is your name?");
+    alert ("Welcome to my website " + userAdjective + ".");
 
-    toggleButton.addEventListener("click", () => {
-        naviList.classList.toggle("active");
-    })
-    // const bottonToScrollUp = document.getElementById("myButton");
+}
 </script>

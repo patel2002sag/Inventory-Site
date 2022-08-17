@@ -41,6 +41,30 @@ if (isset($_POST['submit'])) {
     }
 }
 
+// ********Fetch New Data From products and Insert into items********
+$sql2 = "SELECT * FROM `products`";
+$result2 = mysqli_query($conn, $sql2);
+if (isset($_POST['submit']) && $result2) {
+    // Fetch the data from the databse
+    while ($row = mysqli_fetch_assoc($result2)) {
+        $id =  $row['id'];
+        $productName =  $row['productName'];
+        $skuNumber =  $row['skuNumber'];
+        $price =  $row['price'];
+        $quantity =  $row['quantity'];
+        $size =  $row['size'];
+        $color =  $row['color'];
+        $available =  $row['available'];
+
+    }
+    
+   $insert_data = "UPDATE `items` SET product_id = '$id', productName = '$productName', price = '$price' WHERE product_id = '$id'";
+   $result_data = mysqli_query($conn, $insert_data);
+   if(!$result_data){
+        die(mysqli_error($conn));
+   }
+}
+
 
 
 
@@ -63,11 +87,13 @@ if (isset($_POST['submit'])) {
 
 <body>
 
+
+
     <!-- *************PRODUCT FORM***************** -->
     <div style="left: 250px" ; class="home_content">
         <div class="form">
             <form method="POST">
-                <h2>Add Product</h2>
+                <h2>Update Product</h2>
                 <div class="form-element">
                     <label for="product-name">Product Name*</label>
                     <input type="text" id="product-name" name="productName" placeholder="Enter Name" value=<?php echo $productName ?>>

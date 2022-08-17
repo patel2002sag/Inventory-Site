@@ -17,8 +17,9 @@ if (isset($_POST['submit'])) {
 
 
     $sql = "INSERT into `products` (productName, skuNumber, price, quantity, size, color, available) values('$productName', '$skuNumber', '$price', '$quantity', '$size', '$color', '$available')";
-
     $result = mysqli_query($conn, $sql);
+    
+
 
     if ($result) {
         header('location:display_data.php');
@@ -26,8 +27,29 @@ if (isset($_POST['submit'])) {
         die(mysqli_error($conn));
     }
 }
+// ********Fetch the Data From products and Insert into items********
+$sql2 = "SELECT * FROM `products`";
+$result2 = mysqli_query($conn, $sql2);
+if (isset($_POST['submit']) && $result2) {
+    // Fetch the data from the databse
+    while ($row = mysqli_fetch_assoc($result2)) {
+        $id =  $row['id'];
+        $productName =  $row['productName'];
+        $skuNumber =  $row['skuNumber'];
+        $price =  $row['price'];
+        $quantity =  $row['quantity'];
+        $size =  $row['size'];
+        $color =  $row['color'];
+        $available =  $row['available'];
 
-
+    }
+    
+   $insert_data = "INSERT into `items` (product_id, productName, price) values('$id', '$productName', '$price')";
+   $result_data = mysqli_query($conn, $insert_data);
+   if(!$result_data){
+        die(mysqli_error($conn));
+   }
+}
 
 
 
@@ -48,6 +70,33 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+
+    <!-- NavBar -->
+    <nav class = "navbar">
+        <div>
+            <a href="index.php">
+                <img  class = "primary-icon" src= "relax_icon.png" alt="">
+            </a>
+        </div>
+        <!-- Item List -->
+        <ul class = "nav-list" id = "navi-list">
+            <li class = "list-item">
+                <a href="display_data.php">Products</a>
+            </li>
+            <li class = "list-item">
+                <a href="customer.php">Contact</a>
+            </li>
+            <li class = "list-item">
+                <a href="#">About</a>
+            </li>
+        </ul>
+        <!-- Hamburgeer menu icon -->
+        <div class = "menu" id = "toggle-button">
+            <div class = "menu-line"></div>
+            <div class = "menu-line"></div>
+            <div class = "menu-line"></div>
+        </div>
+    </nav>
 
     <!-- *************PRODUCT FORM***************** -->
     <div style="left: 250px" ; class="home_content">
